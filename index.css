@@ -17,7 +17,7 @@ select {
 
 #renderFiveRandom {
     padding-top: 10px;
-    height: 600px;
+    height: 650px;
     overflow: auto;
     scroll-padding: 10px;
 }
