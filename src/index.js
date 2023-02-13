@@ -56,20 +56,20 @@ function changeLanguage(e) {
         .then((data) => {
             const drink = data.drinks[0];
             if (e.target.value === "English") {
-                instructionsText.textContent = drink.strInstructions
+                instructionsText.textContent = drink.strInstructions;
             } else if (e.target.value === "German") {
-                instructionsText.textContent = drink.strInstructionsDE
+                instructionsText.textContent = drink.strInstructionsDE;
             } else if (e.target.value === "Italian") {
-                instructionsText.textContent = drink.strInstructionsIT
+                instructionsText.textContent = drink.strInstructionsIT;
             } else if (e.target.value === "Spanish") {
-                instructionsText.textContent = drink.strInstructionsES
+                instructionsText.textContent = drink.strInstructionsES;
             }
-        })
+        });
 }
 
 
 function addIngredientsList(randomDrink, ul) {
-    console.log(randomDrink)
+    console.log(randomDrink);
     let i = 1;
     
     while (randomDrink["strIngredient" + i.toString()] != null) {
