@@ -1,10 +1,25 @@
+select {
+    height: 20px;
+}
+
+#language-instructions-container {
+    margin-left: 40px;
+    max-width: 300px;
+}
+
+
+#buttonDiv {
+    padding-bottom: 10px;
+}
 .container {
     display: flex;
 }
 
 #renderFiveRandom {
-    height: 700px;
+    padding-top: 10px;
+    height: 600px;
     overflow: auto;
+    scroll-padding: 10px;
 }
 
 #renderFiveRandom img {

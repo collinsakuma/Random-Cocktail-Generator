@@ -7,7 +7,7 @@
     <script defer type="text/javascript" src="src/index.js"></script>
 </head>
 <main>
-    <div>
+    <div id="buttonDiv">
         <button id="regenerateCocktails">Refresh Cocktails</button>
     </div>
 
@@ -22,18 +22,26 @@
             <h2 id="cocktailName">Drink Name</h2>
             <ul id="ingredientsList"></ul>
             <div id="instructions"></div>
+           
+
+        </div>
+
+        <div id="language-instructions-container">
+            <label for="select-language">Language:</label>
+            <select id="languageSelect" name="select-language">
+                <option value="English">English</option>
+                <option value="German">German</option>
+                <option value="Italian">Italian</option>
+                <option value="Spanish">Spanish</option>
+            </select>
+
             <p id="instructionsText"></p>
+
         </div>
 
     </div>
-    <label for="select-language">Language:</label>
-    <select id="languageSelect" name="select-language">
-        <option value="English">English</option>
-        <option value="German">German</option>
-        <option value="Italian">Italian</option>
-        <option value="Spanish">Spanish</option>
-    </select>
-   
+
+
 </main>
 
 </html>
