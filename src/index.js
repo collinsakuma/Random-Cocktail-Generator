@@ -1,58 +1,83 @@
-const randomCocktailUrl = "http://www.thecocktaildb.com/api/json/v1/1/random.php"
-const renderFiveRandom = document.getElementById('renderFiveRandom')
+const randomCocktailUrl = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
+const renderFiveRandom = document.getElementById('renderFiveRandom');
+const numRandomCocktails = 5;
 
-// fetch random cocktail from API //
-function renderCocktails() {
-    fetch(randomCocktailUrl)
-        .then(res => res.json())
-        .then(randomDrink => addRandomDrink(randomDrink))
-}
+// renders 5 on page load
+loadCocktails();
 
-// create random drink and add to main //
-function addRandomDrink(randomDrink) {
-    const img = document.createElement('img')
-    img.addEventListener('click', () => {
-        document.getElementById('centerImage').src = randomDrink.drinks[0].strDrinkThumb
-        document.getElementById('cocktailName').textContent = randomDrink.drinks[0].strDrink
-        document.getElementById('instructionsText').textContent = randomDrink.drinks[0].strInstructions
-    })
-    const h4 = document.createElement('h4')
-    h4.textContent = randomDrink.drinks[0].strDrink
-    img.src = randomDrink.drinks[0].strDrinkThumb
-    renderFiveRandom.append(img, h4)
-}
-
-// render 5 random cocktails //
+// render 5 random cocktails
 function loadCocktails() {
-    for (i=0; i < 5; i++) {
-        renderCocktails()
+    for (let i = 0; i < numRandomCocktails; i++) {
+        renderCocktail();
     }
 }
 
-// Refresh Cocktails Button //
+// fetch random cocktail from API
+function renderCocktail() {
+    fetch(randomCocktailUrl)
+        .then(res => res.json())
+        .then(randomDrink => addRandomDrink(randomDrink.drinks[0])) // drinks[0] contains drink object
+}
+
+// create random drink and add to main
+function addRandomDrink(randomDrink) {
+    const img = document.createElement('img');
+    img.addEventListener('click', () => {
+        document.getElementById('centerImage').src = randomDrink.strDrinkThumb;
+        document.getElementById('cocktailName').textContent = randomDrink.strDrink;
+        document.getElementById('instructionsText').textContent = randomDrink.strInstructions;
+        const ul = document.getElementById('ingredientsList');
+        ul.innerHTML = "";
+        addIngredientsList(randomDrink, ul)
+    })
+
+    const h4 = document.createElement('h4');
+    h4.textContent = randomDrink.strDrink;
+    img.src = randomDrink.strDrinkThumb;
+    renderFiveRandom.append(img, h4);
+    
+}
+
+
+// Refresh Cocktails Button
 document.getElementById('regenerateCocktails').addEventListener('click', () => {
     renderFiveRandom.innerHTML = ""
-    loadCocktails()
+    loadCocktails();
 })
-// renders 5 on page load//
-loadCocktails()
 
-document.getElementById('languageSelect').addEventListener('change', changeLanguage)
+
+document.getElementById('languageSelect').addEventListener('change', changeLanguage);
 
 function changeLanguage(e) {
-    const cocktailName = document.getElementById('cocktailName').textContent
+    const cocktailName = document.getElementById('cocktailName').textContent;
     const instructionsText = document.getElementById('instructionsText')
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktailName}`)
         .then(res => res.json())
         .then((data) => {
+            const drink = data.drinks[0];
             if (e.target.value === "English") {
-                instructionsText.textContent = data.drinks[0].strInstructions
+                instructionsText.textContent = drink.strInstructions
             } else if (e.target.value === "German") {
-                instructionsText.textContent = data.drinks[0].strInstructionsDE
+                instructionsText.textContent = drink.strInstructionsDE
             } else if (e.target.value === "Italian") {
-                instructionsText.textContent = data.drinks[0].strInstructionsIT
+                instructionsText.textContent = drink.strInstructionsIT
             } else if (e.target.value === "Spanish") {
-                instructionsText.textContent = data.drinks[0].strInstructionsES
+                instructionsText.textContent = drink.strInstructionsES
             }
         })
+}
+
+
+function addIngredientsList(randomDrink, ul) {
+    console.log(randomDrink)
+    let i = 1;
+    
+    while (randomDrink["strIngredient" + i.toString()] != null) {
+        const li = document.createElement('li');       
+        li.textContent = randomDrink["strIngredient" + i.toString()];
+        ul.append(li);
+        i++; 
+
+    }
+    
 }
