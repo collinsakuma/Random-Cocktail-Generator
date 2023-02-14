@@ -89,7 +89,9 @@ function addIngredientsList(randomDrink, ul) {
     const liData = [];
     
     while (randomDrink["strIngredient" + i.toString()] != null) {
-        liData.push(randomDrink["strIngredient" + i.toString()]);
+        // check if measurement exists, otherwise set to empty string
+        const measurement = randomDrink["strMeasure" + i.toString()] != null ? `, ${randomDrink["strMeasure" + i.toString()]}` : "";
+        liData.push(randomDrink["strIngredient" + i.toString()] + measurement);
         i++;
     }
 
