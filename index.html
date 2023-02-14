@@ -3,21 +3,32 @@
 
 <head>
     <title>Random Cocktail Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@700&family=Raleway:wght@200&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="index.css" />
     <script defer type="text/javascript" src="src/index.js"></script>
 </head>
 <main>
     <h1>Random Cocktail Generator</h1>
-    <div id="buttonDiv">
-        <button id="regenerateCocktails">Refresh Cocktails</button>
-    </div>
+
 
     <div class="container">
+        <div id="buttonAndFiveRandom">
+            <div id="buttonDiv">
+                <button id="regenerateCocktails">Refresh Cocktails</button>
+            </div>
 
-        <div id="renderFiveRandom"></div>
+            <div id="renderFiveRandom"></div>
+        </div>
 
 
         <div id="cocktailDetails">
+            <div id="searchItems">
+                <label for="search">Search Drink:</label>
+                <input type="search" id="search">
+            </div>
             <img id="centerImage" src="https://www.mixlabcocktails.com/images/cocktail-image/image-placeholder@3x.png"
                 placeholder="img">
             <h2 id="cocktailName">Drink Name</h2>
@@ -44,10 +55,6 @@
 
         </div>
 
-    </div>
-    <div>
-        <label for="search">Search Drink:</label>
-        <input type="search" id="search">
     </div>
 
 
