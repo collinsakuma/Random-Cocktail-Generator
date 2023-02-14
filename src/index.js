@@ -101,8 +101,6 @@ function addIngredientsList(randomDrink, ul) {
         const liElement = document.createElement('li');       
         liElement.textContent = li;
         ul.append(liElement);
-    })
-
-    
+    })    
     
 }
