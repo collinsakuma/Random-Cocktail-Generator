@@ -96,3 +96,27 @@ function addIngredientsList(randomDrink, ul) {
     }
     
 }
+
+// Search drink
+const searchInput = document.getElementById('search')
+searchInput.addEventListener('input', e => {
+    const value = e.target.value;
+    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${value}`)
+        .then(res => res.json())
+        .then((data) => doSomething(data, value))
+})
+
+function doSomething(data, value) {
+    data.drinks.forEach(drink => {
+        if ( drink.strDrink === value) {
+            document.getElementById('searchedDrink').textContent = drink.strDrink;
+            document.getElementById('centerImage').src = drink.strDrinkThumb;
+            document.getElementById('cocktailName').textContent = drink.strDrink;
+            document.getElementById('instructionsText').textContent = drink.strInstructions;
+            const ul = document.getElementById('ingredientsList');
+            ul.innerHTML = "";
+            addIngredientsList(drink, ul)
+            console.log(drink.strDrinkThumb)
+        }
+    })
+}
