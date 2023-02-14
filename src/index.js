@@ -100,15 +100,15 @@ function addIngredientsList(randomDrink, ul) {
 // Search drink
 const searchInput = document.getElementById('search')
 searchInput.addEventListener('input', e => {
-    const value = e.target.value;
-    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${value}`)
+    const searchValue = e.target.value;
+    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchValue}`)
         .then(res => res.json())
-        .then((data) => doSomething(data, value))
+        .then((searchedDrink) => doSomething(searchedDrink, searchValue))
 })
 
-function doSomething(data, value) {
-    data.drinks.forEach(drink => {
-        if ( drink.strDrink === value) {
+function doSomething(searchedDrink, searchValue) {
+    searchedDrink.drinks.forEach(drink => {
+        if ( drink.strDrink === searchValue) {
             document.getElementById('searchedDrink').textContent = drink.strDrink;
             document.getElementById('centerImage').src = drink.strDrinkThumb;
             document.getElementById('cocktailName').textContent = drink.strDrink;
