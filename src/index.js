@@ -71,13 +71,23 @@ function changeLanguage(e) {
 function addIngredientsList(randomDrink, ul) {
     console.log(randomDrink);
     let i = 1;
+    const liData = [];
     
     while (randomDrink["strIngredient" + i.toString()] != null) {
-        const li = document.createElement('li');       
-        li.textContent = randomDrink["strIngredient" + i.toString()];
-        ul.append(li);
-        i++; 
-
+        liData.push(randomDrink["strIngredient" + i.toString()]);
+        i++;
     }
+
+    // alphabetize ingredients with sort
+    liData.sort((ingredient1,ingredient2) => ingredient1.localeCompare(ingredient2));
+
+    // appends to list
+    liData.forEach(li => {
+        const liElement = document.createElement('li');       
+        liElement.textContent = li;
+        ul.append(liElement);
+    })
+
+    
     
 }
