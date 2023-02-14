@@ -31,10 +31,10 @@ function addRandomDrink(randomDrink) {
         addIngredientsList(randomDrink, ul)
     })
 
-    const h4 = document.createElement('h4');
-    h4.textContent = randomDrink.strDrink;
+    const p = document.createElement('p');
+    p.innerHTML = `<b>${randomDrink.strDrink}</b>: ${randomDrink.strCategory}`;
     img.src = randomDrink.strDrinkThumb;
-    renderFiveRandom.append(img, h4);
+    renderFiveRandom.append(img, p);
     
 }
 
