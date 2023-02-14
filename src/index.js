@@ -5,6 +5,11 @@ const numRandomCocktails = 5;
 // renders 5 on page load
 loadCocktails();
 
+// renders first cocktail into middle card
+window.onload = function () {
+    document.querySelector("#renderFiveRandom").firstChild.click()};
+
+
 // render 5 random cocktails
 function loadCocktails() {
     for (let i = 0; i < numRandomCocktails; i++) {
