@@ -118,15 +118,13 @@ searchInput.addEventListener('input', e => {
 
 function doSomething(searchedDrink, searchValue) {
     searchedDrink.drinks.forEach(drink => {
-        if ( drink.strDrink === searchValue) {
-            document.getElementById('searchedDrink').textContent = drink.strDrink;
+        if ( drink.strDrink.toLowerCase() === searchValue.toLowerCase()) {
             document.getElementById('centerImage').src = drink.strDrinkThumb;
             document.getElementById('cocktailName').textContent = drink.strDrink;
             document.getElementById('instructionsText').textContent = drink.strInstructions;
             const ul = document.getElementById('ingredientsList');
             ul.innerHTML = "";
             addIngredientsList(drink, ul)
-            console.log(drink.strDrinkThumb)
         }
     })
 }
