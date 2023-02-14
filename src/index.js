@@ -31,10 +31,10 @@ function addRandomDrink(randomDrink) {
         addIngredientsList(randomDrink, ul)
     })
 
-    const h4 = document.createElement('h4');
-    h4.textContent = randomDrink.strDrink;
+    const p = document.createElement('p');
+    p.innerHTML = `<b>${randomDrink.strDrink}</b>: ${randomDrink.strCategory}`;
     img.src = randomDrink.strDrinkThumb;
-    renderFiveRandom.append(img, h4);
+    renderFiveRandom.append(img, p);
     
 }
 
@@ -86,14 +86,24 @@ function dropdownLogic(data, instructionsText, e) {
 function addIngredientsList(randomDrink, ul) {
     console.log(randomDrink);
     let i = 1;
+    const liData = [];
     
     while (randomDrink["strIngredient" + i.toString()] != null) {
-        const li = document.createElement('li');       
-        li.textContent = randomDrink["strIngredient" + i.toString()];
-        ul.append(li);
-        i++; 
-
+        // check if measurement exists, otherwise set to empty string
+        const measurement = randomDrink["strMeasure" + i.toString()] != null ? `, ${randomDrink["strMeasure" + i.toString()]}` : "";
+        liData.push(randomDrink["strIngredient" + i.toString()] + measurement);
+        i++;
     }
+
+    // alphabetize ingredients with sort
+    liData.sort((ingredient1,ingredient2) => ingredient1.localeCompare(ingredient2));
+
+    // appends to list
+    liData.forEach(li => {
+        const liElement = document.createElement('li');       
+        liElement.textContent = li;
+        ul.append(liElement);
+    })    
     
 }
 

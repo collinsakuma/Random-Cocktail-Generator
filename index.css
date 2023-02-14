@@ -1,5 +1,14 @@
+main {
+    font-family: Arial;
+    font-size: small;
+}
+
 select {
     height: 20px;
+}
+
+.container {
+    display: flex;
 }
 
 #language-instructions-container {
@@ -11,9 +20,6 @@ select {
 #buttonDiv {
     padding-bottom: 10px;
 }
-.container {
-    display: flex;
-}
 
 #renderFiveRandom {
     padding-top: 10px;
@@ -22,9 +28,15 @@ select {
     scroll-padding: 10px;
 }
 
+#renderFiveRandom p {
+    padding-top: 2px;
+ }
+ 
+
 #renderFiveRandom img {
     width: 250px;
     height: 250px;
+    padding-top: 5px;
 }
 
 #cocktailDetails img {
