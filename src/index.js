@@ -23,9 +23,15 @@ function renderCocktail() {
 function addRandomDrink(randomDrink) {
     const img = document.createElement('img');
     img.addEventListener('click', () => {
+        document.getElementById('languageSelect').selectedIndex = 'English'
+        document.getElementById('english').hidden = false;
+        document.getElementById('german').hidden = false;
+        document.getElementById('italian').hidden = false;
+        document.getElementById('spanish').hidden = false;
         document.getElementById('centerImage').src = randomDrink.strDrinkThumb;
         document.getElementById('cocktailName').textContent = randomDrink.strDrink;
         document.getElementById('instructionsText').textContent = randomDrink.strInstructions;
+        filterLanguages(randomDrink);
         const ul = document.getElementById('ingredientsList');
         ul.innerHTML = "";
         addIngredientsList(randomDrink, ul)
@@ -38,6 +44,20 @@ function addRandomDrink(randomDrink) {
     
 }
 
+function filterLanguages(randomDrink) {
+    if (randomDrink.strInstructions === null) {
+        document.getElementById('english').hidden = true;
+    }
+    if (randomDrink.strInstructionsDE === null) {
+        document.getElementById('german').hidden = true;
+    }
+    if (randomDrink.strInstructionsIT === null) {
+        document.getElementById('italian').hidden = true;
+    }
+    if (randomDrink.strInstructionsES === null) {
+        document.getElementById('spanish').hidden = true;
+    }
+}
 
 // Refresh Cocktails Button
 document.getElementById('regenerateCocktails').addEventListener('click', () => {
@@ -61,24 +81,12 @@ function dropdownLogic(data, instructionsText, e) {
     const drink = data.drinks[0];
     if (e.target.value === "English") {
         instructionsText.textContent = drink.strInstructions;
-        if (drink.strInstructions === null) {
-            instructionsText.textContent = 'English not Available';
-        }
     } else if (e.target.value === "German") {
         instructionsText.textContent = drink.strInstructionsDE;
-        if (drink.strInstructionsDE === null) {
-            instructionsText.textContent = 'German not available';
-        }
     } else if (e.target.value === "Italian") {
         instructionsText.textContent = drink.strInstructionsIT;
-        if (drink.strInstructionsIT === null) {
-            instructionsText.textContent = 'Italian not available';
-        }
     } else if (e.target.value === "Spanish") {
         instructionsText.textContent = drink.strInstructionsES;
-        if (drink.strInstructionsES === null) {
-            instructionsText.textContent = 'Spanish not available';
-        }
     }
 }
 
