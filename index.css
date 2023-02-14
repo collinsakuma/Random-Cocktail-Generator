@@ -3,29 +3,42 @@ main {
     font-size: small;
 }
 
+img {
+    box-shadow: 6px 7px rgb(139, 139, 186);
+    border-radius: 3%;
+}
+
 select {
     height: 20px;
+    width: 150px;
+    border-radius: 10px;
 }
 
 .container {
     display: flex;
+    
 }
 
-#language-instructions-container {
-    margin-left: 40px;
-    max-width: 300px;
-}
 
+#regenerateCocktails {
+    margin: auto;
+}
 
 #buttonDiv {
     padding-bottom: 10px;
+    padding-left: 75px;
+    
 }
 
 #renderFiveRandom {
     padding-top: 10px;
+    width: 265px;
     height: 650px;
     overflow: auto;
     scroll-padding: 10px;
+    background-color: lavender;
+    padding-left: 10px;
+    border-radius: 20px;
 }
 
 #renderFiveRandom p {
@@ -37,19 +50,39 @@ select {
     width: 250px;
     height: 250px;
     padding-top: 5px;
+   
 }
 
 #cocktailDetails img {
     width: 300px;
     height: 300px;
+    box-shadow: 6px 6px rosybrown;
 }
 
 #cocktailDetails {
     padding-left: 100px;
-    max-width: 300px
+    max-width: 300px;
+    justify-content: center;
+    
 }
 
 #cocktailName {
     text-align: center;
 }
 
+
+
+#language-instructions-container {
+    margin-left: 40px;
+    width: 275px;
+    display: block;
+    height: fit-content;
+    overflow: hidden;
+    background-color: rosybrown;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+#instructionsText {
+    padding: 10px;
+}
