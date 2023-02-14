@@ -46,6 +46,7 @@ document.getElementById('regenerateCocktails').addEventListener('click', () => {
 })
 
 
+// Language select Dropdown
 document.getElementById('languageSelect').addEventListener('change', changeLanguage);
 
 function changeLanguage(e) {
@@ -53,18 +54,32 @@ function changeLanguage(e) {
     const instructionsText = document.getElementById('instructionsText')
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktailName}`)
         .then(res => res.json())
-        .then((data) => {
-            const drink = data.drinks[0];
-            if (e.target.value === "English") {
-                instructionsText.textContent = drink.strInstructions;
-            } else if (e.target.value === "German") {
-                instructionsText.textContent = drink.strInstructionsDE;
-            } else if (e.target.value === "Italian") {
-                instructionsText.textContent = drink.strInstructionsIT;
-            } else if (e.target.value === "Spanish") {
-                instructionsText.textContent = drink.strInstructionsES;
-            }
-        });
+        .then((data) => dropdownLogic(data, instructionsText, e))
+}
+
+function dropdownLogic(data, instructionsText, e) {
+    const drink = data.drinks[0];
+    if (e.target.value === "English") {
+        instructionsText.textContent = drink.strInstructions;
+        if (drink.strInstructions === null) {
+            instructionsText.textContent = 'English not Available';
+        }
+    } else if (e.target.value === "German") {
+        instructionsText.textContent = drink.strInstructionsDE;
+        if (drink.strInstructionsDE === null) {
+            instructionsText.textContent = 'German not available';
+        }
+    } else if (e.target.value === "Italian") {
+        instructionsText.textContent = drink.strInstructionsIT;
+        if (drink.strInstructionsIT === null) {
+            instructionsText.textContent = 'Italian not available';
+        }
+    } else if (e.target.value === "Spanish") {
+        instructionsText.textContent = drink.strInstructionsES;
+        if (drink.strInstructionsES === null) {
+            instructionsText.textContent = 'Spanish not available';
+        }
+    }
 }
 
 
