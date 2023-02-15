@@ -2,13 +2,16 @@ const randomCocktailUrl = "https://www.thecocktaildb.com/api/json/v1/1/random.ph
 const renderFiveRandom = document.getElementById('renderFiveRandom');
 const numRandomCocktails = 5;
 
+
 // renders 5 on page load
 loadCocktails();
 
-// renders first cocktail into middle card
-window.onload = function () {
-    document.querySelector("#renderFiveRandom").firstChild.click()};
 
+// renders first cocktail into middle card
+window.onload = async function () {
+    const result = await renderCocktail();
+    document.querySelector('#renderFiveRandom').firstChild.click();
+};
 
 // render 5 random cocktails
 function loadCocktails() {
@@ -19,9 +22,10 @@ function loadCocktails() {
 
 // fetch random cocktail from API
 function renderCocktail() {
-    fetch(randomCocktailUrl)
+    return fetch(randomCocktailUrl)
         .then(res => res.json())
         .then(randomDrink => addRandomDrink(randomDrink.drinks[0])) // drinks[0] contains drink object
+
 }
 
 // create random drink and add to main
@@ -46,7 +50,6 @@ function addRandomDrink(randomDrink) {
     p.innerHTML = `<b>${randomDrink.strDrink}</b>: ${randomDrink.strCategory}`;
     img.src = randomDrink.strDrinkThumb;
     renderFiveRandom.append(img, p);
-    
 }
 
 function filterLanguages(randomDrink) {
@@ -97,7 +100,6 @@ function dropdownLogic(data, instructionsText, e) {
 
 
 function addIngredientsList(randomDrink, ul) {
-    console.log(randomDrink);
     let i = 1;
     const liData = [];
     
