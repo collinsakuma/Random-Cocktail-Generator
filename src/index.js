@@ -28,7 +28,7 @@ function renderCocktail() {
 
 }
 
-// create random drink and add to main
+// create random drink and add to div renderFiveRandom
 function addRandomDrink(randomDrink) {
     const img = document.createElement('img');
     img.addEventListener('click', () => {
@@ -98,7 +98,7 @@ function dropdownLogic(data, instructionsText, e) {
     }
 }
 
-
+// add ingredients to center card
 function addIngredientsList(randomDrink, ul) {
     let i = 1;
     const liData = [];
