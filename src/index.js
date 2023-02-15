@@ -47,7 +47,7 @@ function addRandomDrink(randomDrink) {
     })
 
     const p = document.createElement('p');
-    p.innerHTML = `<b>${randomDrink.strDrink}</b>: ${randomDrink.strCategory}`;
+    p.innerHTML = `<b><font size="2.5pt" face="Raleway">${randomDrink.strDrink}</font></b><br> ${randomDrink.strCategory}`;
     img.src = randomDrink.strDrinkThumb;
     renderFiveRandom.append(img, p);
 }

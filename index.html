@@ -5,8 +5,7 @@
     <title>Random Cocktail Generator</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css" />
     <script defer type="text/javascript" src="src/index.js"></script>
 </head>
@@ -17,7 +16,7 @@
     <div class="container">
         <div id="buttonAndFiveRandom">
             <div id="buttonDiv">
-                <button id="regenerateCocktails">Refresh Cocktails</button> 
+                <button id="regenerateCocktails">Refresh Cocktails</button>
             </div>
 
             <div id="renderFiveRandom"></div>
@@ -26,7 +25,7 @@
 
         <div id="cocktailDetails">
             <div id="searchItems">
-                <label for="search">Search Drink:</label>
+                <label for="search"></label>
                 <input type="search" id="search">
             </div>
             <img id="centerImage" src="https://www.mixlabcocktails.com/images/cocktail-image/image-placeholder@3x.png"
@@ -40,14 +39,16 @@
         </div>
 
         <div id="language-instructions-container">
-            <label for="select-language">Language:</label>
-            <select id="languageSelect" name="select-language">
-                <option id="english" value="English">English</option>
-                <option id="german" value="German">German</option>
-                <option id="italian" value="Italian">Italian</option>
-                <option id="spanish" value="Spanish">Spanish</option>
-            </select>
+            <div id="languageInfo">
+                <label for="select-language"></label>
+                <select id="languageSelect" name="select-language">
+                    <option id="english" value="English">English</option>
+                    <option id="german" value="German">German</option>
+                    <option id="italian" value="Italian">Italian</option>
+                    <option id="spanish" value="Spanish">Spanish</option>
+                </select>
 
+            </div>
             <div id="instructions-container">
                 <h4>Instructions</h4>
                 <p id="instructionsText"></p>
