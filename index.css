@@ -1,5 +1,7 @@
 h1 {
     text-align: center;
+    font-family: 'Raleway';
+    font-size: 40px;
 }
 
 #searchItems {
@@ -13,9 +15,10 @@ input {
 
 body {
     background-color: floralwhite;
-    font-family: 'Didact Gothic', sans-serif;
+    font-family: 'Arial';
     font-size: small;
 }
+
 
 
 img {
@@ -34,18 +37,23 @@ select {
     justify-content: center;
 }
 
-
-#regenerateCocktails {
-    margin: auto;
+h4 {
+    font-family: 'Raleway';
 }
 
+h2 {
+    font-family: 'Raleway';
+}
+
+
 #buttonDiv {
-    padding-bottom: 10px;
     padding-left: 75px;
+    padding-bottom: 20px;
 }
 
 #buttonAndFiveRandom {
     justify-content: center;
+    align-items: center;
 }
 
 
