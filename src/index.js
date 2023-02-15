@@ -1,22 +1,24 @@
 const randomCocktailUrl = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
 const renderFiveRandom = document.getElementById('renderFiveRandom');
-const numRandomCocktails = 5;
+const numRandomCocktails = 4;
 
+// async function handleFetch(){
+//     const response = await fetch("some_url")
+//     const data = await response.json()
+//     console.log(data)
+// }
 
 // renders 5 on page load
+async function loadFirstCocktail() {
+    const response = await fetch(randomCocktailUrl);
+    const data = await response.json();
+    addRandomDrink(data.drinks[0]);
+    setCardElements(data.drinks[0]);
+}
+loadFirstCocktail();
 loadCocktails();
 
-
-// renders first cocktail into middle card
-window.onload = function () {
-    document.querySelector('#renderFiveRandom').firstChild.click();
-};
-// window.onload = async function () {
-//     const result = await renderCocktail();
-//     document.querySelector('#renderFiveRandom').firstChild.click();
-// };
-
-// render 5 random cocktails
+// render 4 random cocktails
 function loadCocktails() {
     for (let i = 0; i < numRandomCocktails; i++) {
         renderCocktail();
@@ -27,7 +29,9 @@ function loadCocktails() {
 function renderCocktail() {
     return fetch(randomCocktailUrl)
         .then(res => res.json())
-        .then(randomDrink => addRandomDrink(randomDrink.drinks[0])) // drinks[0] contains drink object
+        .then(randomDrink => {
+            addRandomDrink(randomDrink.drinks[0])
+        }) // drinks[0] contains drink object
 
 }
 
@@ -35,18 +39,7 @@ function renderCocktail() {
 function addRandomDrink(randomDrink) {
     const img = document.createElement('img');
     img.addEventListener('click', () => {
-        document.getElementById('languageSelect').selectedIndex = 'English'
-        document.getElementById('english').hidden = false;
-        document.getElementById('german').hidden = false;
-        document.getElementById('italian').hidden = false;
-        document.getElementById('spanish').hidden = false;
-        document.getElementById('centerImage').src = randomDrink.strDrinkThumb;
-        document.getElementById('cocktailName').textContent = randomDrink.strDrink;
-        document.getElementById('instructionsText').textContent = randomDrink.strInstructions;
-        filterLanguages(randomDrink);
-        const ul = document.getElementById('ingredientsList');
-        ul.innerHTML = "";
-        addIngredientsList(randomDrink, ul)
+        setCardElements(randomDrink);
     })
 
     const p = document.createElement('p');
@@ -137,18 +130,22 @@ searchInput.addEventListener('input', e => {
 function doSomething(searchedDrink, searchValue) {
     searchedDrink.drinks.forEach(drink => {
         if ( drink.strDrink.toLowerCase() === searchValue.toLowerCase()) {
-            document.getElementById('languageSelect').selectedIndex = 'English'
-            document.getElementById('english').hidden = false;
-            document.getElementById('german').hidden = false;
-            document.getElementById('italian').hidden = false;
-            document.getElementById('spanish').hidden = false;
-            document.getElementById('centerImage').src = drink.strDrinkThumb;
-            document.getElementById('cocktailName').textContent = drink.strDrink;
-            document.getElementById('instructionsText').textContent = drink.strInstructions;
-            const ul = document.getElementById('ingredientsList');
-            ul.innerHTML = "";
-            addIngredientsList(drink, ul)
-            filterLanguages(drink)
+            setCardElements(drink);
         }
     })
+}
+
+function setCardElements(randomDrink) {
+    document.getElementById('languageSelect').selectedIndex = 'English'
+    document.getElementById('english').hidden = false;
+    document.getElementById('german').hidden = false;
+    document.getElementById('italian').hidden = false;
+    document.getElementById('spanish').hidden = false;
+    document.getElementById('centerImage').src = randomDrink.strDrinkThumb;
+    document.getElementById('cocktailName').textContent = randomDrink.strDrink;
+    document.getElementById('instructionsText').textContent = randomDrink.strInstructions;
+    const ul = document.getElementById('ingredientsList');
+    ul.innerHTML = "";
+    addIngredientsList(randomDrink, ul)
+    filterLanguages(randomDrink);
 }
