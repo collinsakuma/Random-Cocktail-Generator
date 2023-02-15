@@ -137,12 +137,18 @@ searchInput.addEventListener('input', e => {
 function doSomething(searchedDrink, searchValue) {
     searchedDrink.drinks.forEach(drink => {
         if ( drink.strDrink.toLowerCase() === searchValue.toLowerCase()) {
+            document.getElementById('languageSelect').selectedIndex = 'English'
+            document.getElementById('english').hidden = false;
+            document.getElementById('german').hidden = false;
+            document.getElementById('italian').hidden = false;
+            document.getElementById('spanish').hidden = false;
             document.getElementById('centerImage').src = drink.strDrinkThumb;
             document.getElementById('cocktailName').textContent = drink.strDrink;
             document.getElementById('instructionsText').textContent = drink.strInstructions;
             const ul = document.getElementById('ingredientsList');
             ul.innerHTML = "";
             addIngredientsList(drink, ul)
+            filterLanguages(drink)
         }
     })
 }
