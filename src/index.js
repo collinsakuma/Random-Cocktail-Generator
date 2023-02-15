@@ -8,10 +8,13 @@ loadCocktails();
 
 
 // renders first cocktail into middle card
-window.onload = async function () {
-    const result = await renderCocktail();
+window.onload = function () {
     document.querySelector('#renderFiveRandom').firstChild.click();
 };
+// window.onload = async function () {
+//     const result = await renderCocktail();
+//     document.querySelector('#renderFiveRandom').firstChild.click();
+// };
 
 // render 5 random cocktails
 function loadCocktails() {
