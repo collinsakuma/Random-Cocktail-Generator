@@ -52,7 +52,8 @@ input {
 body {
     background-color: floralwhite;
     font-family: 'Arial';
-    font-size: small; 
+    font-size: small;
+    color:rgb(49, 49, 49);
 }
 
 
