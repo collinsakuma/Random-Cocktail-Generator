@@ -1,11 +1,6 @@
 const randomCocktailUrl = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
 const renderFiveRandom = document.getElementById('renderFiveRandom');
 
-// async function handleFetch(){
-//     const response = await fetch("some_url")
-//     const data = await response.json()
-//     console.log(data)
-// }
 
 // renders 5 on page load
 async function loadFirstCocktail() {
