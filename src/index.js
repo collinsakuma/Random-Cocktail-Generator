@@ -48,19 +48,12 @@ function addRandomDrink(randomDrink) {
     renderFiveRandom.append(img, p);
 }
 
+// shows available languages for selected drink in dropdown hides unavailable ones
 function filterLanguages(randomDrink) {
-    if (randomDrink.strInstructions === null) {
-        document.getElementById('english').hidden = true;
-    }
-    if (randomDrink.strInstructionsDE === null) {
-        document.getElementById('german').hidden = true;
-    }
-    if (randomDrink.strInstructionsIT === null) {
-        document.getElementById('italian').hidden = true;
-    }
-    if (randomDrink.strInstructionsES === null) {
-        document.getElementById('spanish').hidden = true;
-    }
+    randomDrink.strInstructions === null ? document.getElementById('english').hidden = true : false;
+    randomDrink.strInstructionsDE === null ? document.getElementById('german').hidden = true : false;
+    randomDrink.strInstructionsIT === null ? document.getElementById('italian').hidden = true : false;
+    randomDrink.strInstructionsES === null ? document.getElementById('spanish').hidden = true : false;
 }
 
 // Refresh Cocktails Button
@@ -68,7 +61,6 @@ document.getElementById('regenerateCocktails').addEventListener('click', () => {
     renderFiveRandom.innerHTML = ""
     loadCocktails();
 })
-
 
 // Language select Dropdown
 document.getElementById('languageSelect').addEventListener('change', changeLanguage);
@@ -81,17 +73,15 @@ function changeLanguage(e) {
         .then((data) => dropdownLogic(data, instructionsText, e))
 }
 
+// changes instruction text to specified language
 function dropdownLogic(data, instructionsText, e) {
     const drink = data.drinks[0];
-    if (e.target.value === "English") {
-        instructionsText.textContent = drink.strInstructions;
-    } else if (e.target.value === "German") {
-        instructionsText.textContent = drink.strInstructionsDE;
-    } else if (e.target.value === "Italian") {
-        instructionsText.textContent = drink.strInstructionsIT;
-    } else if (e.target.value === "Spanish") {
-        instructionsText.textContent = drink.strInstructionsES;
-    }
+    const selectedLanguage = e.target.value;
+    return selectedLanguage === "English" ? instructionsText.textContent = drink.strInstructions
+        : selectedLanguage === "German" ? instructionsText.textContent = drink.strInstructionsDE
+        : selectedLanguage === "Italian" ? instructionsText.textContent = drink.strInstructionsIT
+        : selectedLanguage === "Spanish" ? instructionsText.textContent = drink.strInstructionsES
+        : null;
 }
 
 // add ingredients to center card
