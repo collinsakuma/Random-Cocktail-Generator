@@ -24,9 +24,6 @@ h1 {
     align-self: center;
     box-shadow: 0px 0px rosybrown;
     border-radius: 50%;
-    position: absolute;
-    margin: center;
-    margin-left: 47%;
 
 }
 
@@ -63,12 +60,7 @@ body {
     color: rgb(49, 49, 49);
 }
 
-
-@media only screen and (max-width: 800px) {
-
-    #gif {
-        display: none;
-    }
+@media only screen and (max-width: 300px) {
 
     #secondColumn {
         display: flex;
@@ -91,8 +83,6 @@ body {
     }
 
 }
-
-
 
 #secondColumn {
     display: flex;
