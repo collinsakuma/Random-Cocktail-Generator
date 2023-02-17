@@ -14,7 +14,7 @@ h1 {
     display: flex;
     gap: 20px;
     justify-content: center;
-    
+
 }
 
 #gif {
@@ -45,7 +45,7 @@ input {
     border-radius: 20px;
     padding-left: 20px;
     background-image: url("https://www.freeiconspng.com/thumbs/search-icon-png/search-icon-png-2.png");
-    background-size: 15px 15px; 
+    background-size: 15px 15px;
     background-position: 2px 2px;
     background-repeat: no-repeat;
 
@@ -53,16 +53,50 @@ input {
 
 ::-webkit-input-placeholder {
     text-align: center;
-  }
+}
 
 
 body {
     background-color: floralwhite;
     font-family: 'Arial';
     font-size: small;
-    color:rgb(49, 49, 49);
+    color: rgb(49, 49, 49);
 }
 
+
+@media only screen and (max-width: 800px) {
+
+    #gif {
+        display: none;
+    }
+
+    #secondColumn {
+        display: flex;
+        flex-flow: column;
+    }
+
+
+    body {
+        transform-origin: top;
+        transform: scale(0.48);
+    }
+
+    main {
+        font-size: 24px;
+    }
+
+    input {
+        background-image: none;
+        padding-left: 5px;
+    }
+
+}
+
+
+
+#secondColumn {
+    display: flex;
+}
 
 
 img {
@@ -102,7 +136,6 @@ button {
 
 button:hover {
     color: rgb(196, 196, 215)
-
 }
 
 
@@ -142,7 +175,7 @@ button:hover {
 
 }
 
-#renderFiveRandom img:hover{
+#renderFiveRandom img:hover {
     opacity: 75%;
 
 }
@@ -168,7 +201,7 @@ button:hover {
     background-clip: padding-box;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    
+
 }
 
 
@@ -189,12 +222,12 @@ button:hover {
 }
 
 #instructions {
-    color:rgb(49, 49, 49);
+    color: rgb(49, 49, 49);
 }
 
 
 #instructionsText {
     padding-right: 5px;
     padding-bottom: 5px;
-    color:rgb(49, 49, 49);
+    color: rgb(49, 49, 49);
 }
